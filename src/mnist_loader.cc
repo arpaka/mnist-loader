@@ -53,9 +53,9 @@ mnist_loader::load_images(std::string image_file, int num)
   ifs.read(p, 4);
   m_cols = to_int(p);
 
-  char* q = new char[m_rows * m_cols];
+  int* q = new int[m_rows * m_cols];
   for (int i=0; i<m_size; ++i) {
-    ifs.read(q, m_rows * m_cols);
+    ifs.read((char*)q, m_rows * m_cols);
     std::vector<double> image(m_rows * m_cols);
     for (int j=0; j<m_rows * m_cols; ++j) {
       image[j] = q[j] / 255.0;
